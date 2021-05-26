@@ -1,3 +1,47 @@
+## Notes:
+- This was build using Python2. Meaning, after translating from MATLAB to Python2, you will most likely have to translate to Python3.
+
+If you really insist on making it work you can use docker. 
+
+1. Pull the container and run the container 
+
+```
+REPO_URL=prodataninja/ubuntu-python2.7
+BUILD_DIR=/home/paola/Documents/CHEF/src/models/matlab/smop
+
+docker run --rm -it  \
+--net=host \
+-v $BUILD_DIR:/home \
+$REPO_URL
+```
+
+```
+cd home/
+```
+
+2. Clone the repo 
+```
+git clone https://github.com/paola-md/smop
+```
+
+3. Install missing packages (check version)
+```
+cd smop
+pip install ply
+pip install networkx==1.1
+pip install numpy==1.15.0
+pip install scipy==0.16
+```
+
+4. Run example or any other files
+```
+python main.py solver.m
+```
+
+You should be able yo see solver.py now 
+
+
+
 ``SMOP`` is Small Matlab and Octave to Python compiler.   
    ``SMOP`` translates matlab to python. Despite obvious similarities
    between matlab and numeric python, there are enough differences to
